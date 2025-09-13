@@ -50,7 +50,7 @@ const videos = [
     channel: "Sushant KC Official",
     views: "10M views",
     time: "2 months ago",
-    channelLogo:"/logo/T series.jpg",
+    channelLogo: "/logo/T series.jpg",
   },
   {
     id: 3,
@@ -116,13 +116,13 @@ const videos = [
     id: 9,
     thumbnail: "/thumb/balen.jpg",
     duration: "3:12",
-    title: "BALEN - NEPAL HASEKO (LAAJ SHARANAM OST) | Bijaya, Sagar, Sitaram, Arjun, Hari, Mala, Arpan",
+    title:
+      "BALEN - NEPAL HASEKO (LAAJ SHARANAM OST) | Bijaya, Sagar, Sitaram, Arjun, Hari, Mala, Arpan",
     channel: "Balen",
     views: "8.1M views",
     time: "7 month ago",
     channelLogo: "/logo/savage.jpg",
   },
-  
 ];
 
 export default function HomePage() {
@@ -144,7 +144,7 @@ export default function HomePage() {
       >
         <div className="px-6 py-2 flex items-center gap-2 text-xl font-bold text-[var(--primary)]">
           <Menu className="w-6 h-6" />
-          <Image src="/logo.png" height={150} width={150} alt="logo"/>
+          <Image src="/logo.png" height={150} width={150} alt="logo" />
         </div>
         <nav className="mt-4 space-y-1">
           {[
@@ -178,25 +178,45 @@ export default function HomePage() {
         </div>
         <div className="mt-2 space-y-2">
           {[
-            "T-Series",
-            "In Depth Story",
-            "Project Kura",
-            "Charlie Chaplin",
-            "Ary Digital HD",
-          ].map((sub, idx) => (
+            {
+              id: 1,
+              name: "T-Series",
+              image: "https://i.pravatar.cc/150?img=20",
+            },
+            {
+              id: 2,
+              name: "In Depth Story",
+              image: "https://i.pravatar.cc/150?img=21",
+            },
+            {
+              id: 3,
+              name: "Project Kura",
+              image: "https://i.pravatar.cc/150?img=22",
+            },
+            {
+              id: 4,
+              name: "Charlie Chaplin",
+              image: "https://i.pravatar.cc/150?img=23",
+            },
+            {
+              id: 5,
+              name: "Ary Digital HD",
+              image: "https://i.pravatar.cc/150?img=24",
+            },
+          ].map((sub) => (
             <div
-              key={idx}
+              key={sub.id}
               className="flex items-center gap-3 px-6 py-2 rounded-lg cursor-pointer"
               style={{
                 color: "var(--foreground)",
               }}
             >
               <img
-                src={`https://i.pravatar.cc/150?img=${20 + idx}`}
-                alt={sub}
+                src={sub.image}
+                alt={sub.name}
                 className="w-6 h-6 rounded-full"
               />
-              <span className="text-sm">{sub}</span>
+              <span className="text-sm">{sub.name}</span>
             </div>
           ))}
         </div>
