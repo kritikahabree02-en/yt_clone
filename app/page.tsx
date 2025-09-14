@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import {
   Home,
   Compass,
@@ -50,7 +52,7 @@ const videos = [
     channel: "Sushant KC Official",
     views: "10M views",
     time: "2 months ago",
-    channelLogo: "/logo/T series.jpg",
+    channelLogo: "/logo/logo.png",
   },
   {
     id: 3,
@@ -126,6 +128,12 @@ const videos = [
 ];
 
 export default function HomePage() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  // function to open modal
+  const openModal = () => setIsOpen(true);
+  // function to close modal
+  const closeModal = () => setIsOpen(false);
   return (
     <div
       className="flex h-screen"
@@ -142,9 +150,12 @@ export default function HomePage() {
           borderColor: "var(--border)",
         }}
       >
-        <div className="px-6 py-2 flex items-center gap-2 text-xl font-bold text-[var(--primary)]">
-          <Menu className="w-6 h-6" />
-          <Image src="/logo.png" height={150} width={150} alt="logo" />
+        <div className="px-6 py-2 flex items-center gap-2 text-xl font-bold text-[var(--accent-foreground)]">
+          <Menu className="w-6 h-6 mr-3" />
+          <span className="flex items-center justify-center gap-2 text-2xl">
+            <Image src="/youtube_logo.png" height={30} width={30} alt="logo" className="mr-[-5px]" />
+          YouTube
+          </span>
         </div>
         <nav className="mt-4 space-y-1">
           {[
@@ -181,27 +192,27 @@ export default function HomePage() {
             {
               id: 1,
               name: "T-Series",
-              image: "https://i.pravatar.cc/150?img=20",
+              image: "/logo/series.jpg",
             },
             {
               id: 2,
               name: "In Depth Story",
-              image: "https://i.pravatar.cc/150?img=21",
+              image: "/logo/depthstory.png",
             },
             {
               id: 3,
               name: "Project Kura",
-              image: "https://i.pravatar.cc/150?img=22",
+              image: "/logo/project kura.jpg",
             },
             {
               id: 4,
               name: "Charlie Chaplin",
-              image: "https://i.pravatar.cc/150?img=23",
+              image: "/logo/charlie.jpg",
             },
             {
               id: 5,
               name: "Ary Digital HD",
-              image: "https://i.pravatar.cc/150?img=24",
+              image: "/logo/ary.jpg",
             },
           ].map((sub) => (
             <div
@@ -269,10 +280,36 @@ export default function HomePage() {
             <Upload />
             <Bell />
             <img
+              onClick={openModal}
               src="https://i.pravatar.cc/40"
               alt="profile"
               className="w-8 h-8 rounded-full"
             />
+
+            {/* Modal */}
+            {isOpen && (
+              <div className="fixed inset-0 flex items-center justify-center bg-black/40 bg-opacity-50 z-50">
+                <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg w-80 text-center">
+                  <h2 className="text-lg font-semibold mb-4">
+                    Sign up for YouTube
+                  </h2>
+                  <button className="w-full flex items-center justify-center gap-2 bg-white text-gray-900 shadow px-4 py-2 rounded-lg hover:bg-gray-50">
+                    <img
+                      src="https://www.svgrepo.com/show/475656/google-color.svg"
+                      alt="Google"
+                      className="w-5 h-5"
+                    />
+                    Continue with Google
+                  </button>
+                  <button
+                    onClick={closeModal}
+                    className="mt-4 w-full shadow px-4 py-2 rounded-lg hover:bg-gray-100"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </header>
 
